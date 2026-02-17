@@ -1,0 +1,344 @@
+:root {
+  /* Farvetema: Graphite Dossier & Amber */
+  --bg: #0d0f12;           /* Meget mørk midnat/grafit */
+  --card-bg: #1a1d23;      /* Mørk grafit kort */
+  --text: #e2e4e9;         /* Varm off-white */
+  --text-muted: #9da3ae;   /* Grålig dæmpet tekst */
+  --accent: #ffb800;       /* Amber / Rav */
+  --accent-secondary: #00d1ff; /* Cyan / Electric */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --radius: 4px;           /* Skarpere, mere "papir/kort" følelse */
+  --container: 1000px;
+  
+  /* Fonts - Beholder HumanKind modernitet */
+  --font-main: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255, 184, 0, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 209, 255, 0.03) 0%, transparent 40%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1rem; }
+h2 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.subhead {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+/* Layout */
+.container {
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.section-narrow {
+  max-width: 800px;
+}
+
+/* Header / Nav */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 15, 18, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.nav a {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.nav a:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* Invitation Card Elements */
+.invite-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-strong);
+  padding: 40px;
+  position: relative;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.invite-card.hero-card-main {
+  padding: 80px 60px;
+  border-top: 4px solid var(--accent);
+  background-image: linear-gradient(to bottom right, rgba(255, 184, 0, 0.02), transparent);
+}
+
+.invite-card.dossier {
+  border-left: 1px solid var(--border-strong);
+  margin-bottom: 24px;
+  background-image: radial-gradient(circle at top right, rgba(255, 255, 255, 0.01), transparent);
+}
+
+/* Foil line effect */
+.card-foil {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.5;
+}
+
+/* Metadata badges */
+.hero-meta {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.meta-divider {
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* Stamps and labels */
+.stamp {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  border: 3px solid rgba(255, 184, 0, 0.2);
+  color: rgba(255, 184, 0, 0.2);
+  padding: 8px 16px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  transform: rotate(12deg);
+  pointer-events: none;
+  user-select: none;
+  text-transform: uppercase;
+}
+
+.label-tag {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  background: var(--accent-secondary);
+  color: #000;
+  font-size: 0.65rem;
+  padding: 4px 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.watermark {
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  font-size: 6rem;
+  font-weight: 900;
+  opacity: 0.02;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Special cards */
+.highlight-card {
+  border-right: 4px solid var(--accent-secondary);
+}
+
+.card-accent-line {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.3;
+}
+
+.rsvp-callout {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border-strong);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rsvp-callout span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Content styling */
+.content {
+  color: var(--text-muted);
+  max-width: 65ch;
+}
+
+.content p { margin-bottom: 1.2rem; }
+.content strong { color: var(--text); font-weight: 600; }
+.content em { color: var(--accent-secondary); font-style: normal; }
+
+.content ul, .content ol {
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.content li { margin-bottom: 0.8rem; }
+
+.content .highlight {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(255, 184, 0, 0.3);
+}
+
+/* Footer */
+.site-footer {
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  opacity: 0.6;
+}
+
+.micro { font-size: 0.75rem; color: var(--text-muted); text-align: center; }
+
+/* Orbs (re-imagined for dark theme) */
+.bg-orb {
+  position: fixed;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.orb-1 { top: -20%; left: -10%; background: var(--accent); }
+.orb-2 { bottom: -20%; right: -10%; background: var(--accent-secondary); }
+.orb-3 { top: 40%; left: 50%; background: #ffffff; width: 30vw; height: 30vw; opacity: 0.05; }
+
+/* Print styles */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .site-header, .bg-orb, .card-foil, .label-tag, .watermark, .nav {
+    display: none !important;
+  }
+  .invite-card {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+    padding: 20px !important;
+  }
+  .content, .subhead, .meta-item {
+    color: #333 !important;
+  }
+  h2, .eyebrow, .rsvp-callout span, .content .highlight {
+    color: #000 !important;
+    border-color: #000 !important;
+  }
+  .stamp {
+    color: #ddd !important;
+    border-color: #ddd !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .invite-card { padding: 30px 20px; }
+  .invite-card.hero-card-main { padding: 60px 30px; }
+  .stamp { top: 20px; right: 20px; font-size: 0.9rem; }
+}
