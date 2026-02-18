@@ -92,7 +92,7 @@ body.intro-active {
   transition: transform 0.4s ease-in;
 }
 
-.intro-active .envelope .flap {
+.envelope.is-opening .flap {
   transform: rotateX(180deg);
   transition-delay: 0.2s;
 }
@@ -131,7 +131,7 @@ body.intro-active {
   justify-content: center;
 }
 
-.intro-active .envelope .letter {
+.envelope.is-opening .letter {
   transform: translateY(-80px) scale(1.1);
   transition-delay: 0.5s;
 }
