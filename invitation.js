@@ -74,6 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -50px 0px'
   };
 
+  if (!('IntersectionObserver' in window)) {
+    revealElements.forEach(el => el.classList.add('reveal-visible'));
+    return;
+  }
+
+
   const revealObserver = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (entry.isIntersecting) {
