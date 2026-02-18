@@ -2,68 +2,87 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
   const skipBtn = document.getElementById('skip-intro');
   const introOverlay = document.getElementById('intro-overlay');
-
-  // Check for reduced motion preference
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const envelope = document.querySelector('.envelope');
 
-  // Function to reveal the main content
-  function revealMain() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let introFinished = false;
+
+  function finishIntro() {
+    if (introFinished) return;
+    introFinished = true;
+
     body.classList.remove('intro-active');
     body.classList.add('intro-complete');
-    
-    // Ensure the page starts at the top
+
+    // Ensure page starts at the top
     window.scrollTo(0, 0);
-    
-    // Cleanup intro overlay after transition
-    setTimeout(() => {
-      if (introOverlay) {
-        introOverlay.style.display = 'none';
-      }
-    }, 1000); // Wait for the fade-out to finish
+
+    // Remove overlay after fade-out completes (match to CSS transition duration)
+    window.setTimeout(() => {
+      if (introOverlay) introOverlay.style.display = 'none';
+    }, 700);
   }
 
-  // If reduced motion is on, skip intro immediately
-  if (prefersReducedMotion) {
-    revealMain();
-  } else {
-    // Start intro sequence
+  function startIntroAnimation() {
+    if (!introOverlay || !envelope) {
+      // If markup is missing, fail open
+      finishIntro();
+      return;
+    }
+
     body.classList.add('intro-active');
 
-    // Manually trigger reveal on click
+    // Trigger envelope opening animation via CSS class
+    envelope.classList.add('is-opening');
+
+    // After envelope animation completes, reveal main page
+    window.setTimeout(() => {
+      finishIntro();
+    }, 900); // keep total intro under ~1s (tweak to match CSS)
+  }
+
+  // Reduced motion: no intro, just show page
+  if (prefersReducedMotion) {
+    finishIntro();
+  } else {
+    // Click to open (invitation feel)
     if (envelope) {
       envelope.style.cursor = 'pointer';
-      envelope.addEventListener('click', () => {
-        revealMain();
+      envelope.addEventListener('click', () => startIntroAnimation(), { once: true });
+    }
+
+    // Allow skip
+    if (skipBtn) {
+      skipBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        finishIntro();
       });
     }
   }
 
-  // Skip button handler
-  if (skipBtn) {
-    skipBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      revealMain();
-    });
+  // Scroll reveal (skip if reduced motion)
+  const revealElements = document.querySelectorAll('.section, .invite-card.dossier');
+
+  if (prefersReducedMotion) {
+    revealElements.forEach(el => el.classList.add('reveal-visible'));
+    return;
   }
 
-  // IntersectionObserver for scroll-reveal
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
   };
 
   const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    for (const entry of entries) {
       if (entry.isIntersecting) {
         entry.target.classList.add('reveal-visible');
         revealObserver.unobserve(entry.target);
       }
-    });
+    }
   }, observerOptions);
 
-  // Observe all sections and dossier cards
-  const revealElements = document.querySelectorAll('.section, .invite-card.dossier');
   revealElements.forEach(el => {
     el.classList.add('reveal-element');
     revealObserver.observe(el);
