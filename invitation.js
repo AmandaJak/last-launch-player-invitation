@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // After envelope animation completes, reveal main page
     window.setTimeout(() => {
       finishIntro();
-    }, 900); // keep total intro under ~1s (tweak to match CSS)
+    }, 1900); // keep total intro under ~1s (tweak to match CSS)
   }
 
   // Reduced motion: no intro, just show page
