@@ -65,6 +65,7 @@ body.intro-active {
   width: 300px;
   height: 200px;
   perspective: 1000px;
+  -webkit-perspective: 1000px;
 }
 
 .envelope {
@@ -74,6 +75,9 @@ body.intro-active {
   background: var(--envelope-bg);
   box-shadow: 0 15px 35px rgba(0,0,0,0.4);
   cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
 }
 
@@ -86,13 +90,16 @@ body.intro-active {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: var(--envelope-flap);
+  -webkit-clip-path: polygon(0 0, 50% 50%, 100% 0);
   clip-path: polygon(0 0, 50% 50%, 100% 0);
   z-index: 3;
   transform-origin: top;
+  -webkit-transition: -webkit-transform 0.4s ease-in;
   transition: transform 0.4s ease-in;
 }
 
 .envelope.is-opening .flap {
+  -webkit-transform: rotateX(180deg);
   transform: rotateX(180deg);
   transition-delay: 0.2s;
 }
@@ -102,6 +109,7 @@ body.intro-active {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: var(--envelope-bg);
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 50%);
   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 50%);
   z-index: 4;
 }
@@ -125,6 +133,7 @@ body.intro-active {
   background: var(--card-bg);
   border: 1px solid var(--border-strong);
   z-index: 2;
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
   transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
   display: flex;
   align-items: center;
@@ -132,6 +141,7 @@ body.intro-active {
 }
 
 .envelope.is-opening .letter {
+  -webkit-transform: translateY(-80px) scale(1.1);
   transform: translateY(-80px) scale(1.1);
   transition-delay: 0.5s;
 }
