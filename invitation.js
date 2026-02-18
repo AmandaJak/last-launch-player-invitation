@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     body.classList.remove('intro-active');
     body.classList.add('intro-complete');
     
+    // Ensure the page starts at the top
+    window.scrollTo(0, 0);
+    
     // Cleanup intro overlay after transition
     setTimeout(() => {
       if (introOverlay) {
