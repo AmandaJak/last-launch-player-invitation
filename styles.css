@@ -653,3 +653,17 @@ h2 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent); text-transf
     align-items: center;
   }
 }
+
+/* Forsøg på at få koden til at virke på iphone */
+.invite-card {
+  position: relative;
+  z-index: 1; /* Sikrer at kortet ligger over baggrunds-orbs */
+}
+
+/* Gør reveal-effekten mere tilgivende i bunden af siden */
+@media (max-height: 700px) {
+  .reveal-element {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
