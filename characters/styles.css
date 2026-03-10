@@ -1,0 +1,58 @@
+/* Character Page Specific Styles */
+
+.hero-mini {
+  padding: 40px 0;
+}
+
+.hero-card-mini {
+  padding: 40px !important;
+  border-top: 2px solid var(--accent);
+}
+
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.character-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.character-name {
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  font-size: 1.4rem;
+}
+
+.character-title {
+  color: var(--accent-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.character-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .characters-grid {
+    grid-template-columns: 1fr;
+  }
+}
