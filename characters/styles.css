@@ -9,6 +9,7 @@
   border-top: 2px solid var(--accent);
 }
 
+
 .brand-link {
   text-decoration: none;
   color: inherit;
@@ -32,12 +33,12 @@
 
 .character-name {
   margin-bottom: 0.5rem;
-  color: var(--text);
+  color: var(--text-primary);
   font-size: 1.4rem;
 }
 
 .character-title {
-  color: var(--accent-secondary);
+  color: var(--accent-2);
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
