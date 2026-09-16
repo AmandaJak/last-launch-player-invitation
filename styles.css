@@ -369,15 +369,6 @@ h2 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent); text-transf
   margin-bottom: 24px;
 }
 
-/* Foil line effect */
-.card-foil {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0.4;
-}
-
 /* Metadata badges */
 .hero-meta {
   margin-top: 3rem;
