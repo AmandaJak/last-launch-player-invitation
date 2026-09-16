@@ -3,7 +3,7 @@
 :root {
   /* Lies Ahead Brand Tokens (matches Host Portal) */
   --ink-rgb: 38 37 35;
-  --accent-rgb: 202 67 60;
+  --accent-rgb: 61 58 134;
 
   --bg: #EEECE4;
   --bg-deep: #E1DDD0;
@@ -13,7 +13,7 @@
   --text-primary: rgb(var(--ink-rgb));
   --text-secondary: #5C574E;
   --accent: rgb(var(--accent-rgb));
-  --accent-hover: #A9352F;
+  --accent-hover: #312E6B;
   --accent-soft: rgb(var(--accent-rgb) / 0.12);
   --accent-2: #14B8A6;
   --accent-2-soft: rgba(20, 184, 166, 0.12);
